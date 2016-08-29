@@ -5,6 +5,7 @@ package com.example.android.justjava; /**
  * package com.example.android.justjava;
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         name = nameEditText.getText().toString();
         int price = calculatePrice();
         String priceMessage = createOrderSummary(price);
-        displayMessage(priceMessage);
+        emailMessage(priceMessage);
     }
 
     /**
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
      * @return order summary String
      */
     private String createOrderSummary (int price) {
-        String priceMessage =  name +
+        String priceMessage =  "Name: " + name +
                 "\nAdd whipped cream? " + hasWhippedCream +
                 "\nAdd chocolate? " + hasChocolate +
                 "\nQuantity: " + quantity +
@@ -120,8 +121,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given text on the screen.
      */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
+    private void emailMessage(String message) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
