@@ -68,7 +68,16 @@ public class MainActivity extends AppCompatActivity {
      * @return total price
      */
     private int calculatePrice() {
-        int price = quantity * 5;
+        int pricePerCup = 5;
+        // Add $1 if user wants whipped cream
+        if (hasWhippedCream) {
+            pricePerCup = pricePerCup + 1;
+        }
+        // Add $2 if user wants chocolate
+        if (hasChocolate) {
+            pricePerCup = pricePerCup + 2;
+        }
+        int price = quantity * pricePerCup;
         return price;
     }
 
