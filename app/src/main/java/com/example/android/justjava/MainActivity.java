@@ -102,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
      * @return order summary String
      */
     private String createOrderSummary (int price) {
-        String priceMessage =  "Name: " + name +
-                "\nAdd whipped cream? " + hasWhippedCream +
-                "\nAdd chocolate? " + hasChocolate +
-                "\nQuantity: " + quantity +
-                "\nTotal: $" + price +
-                "\nThank you!";
+        String priceMessage =  getString(R.string.name) + ": " + name +
+                "\n" + getString(R.string.add_whipped_cream) + "? " + hasWhippedCream +
+                "\n" + getString(R.string.add_chocolate) + "? " + hasChocolate +
+                "\n" + getString(R.string.quantity) + ": " + quantity +
+                "\n" + getString(R.string.total)+ ": " + price +
+                "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
 
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given text on the screen.
+     * This method emails the given text.
      */
     private void emailMessage(String message) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
