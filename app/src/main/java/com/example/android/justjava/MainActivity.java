@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.justjava.R;
 
@@ -21,7 +22,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 0;
+    int quantity = 1;
     boolean hasWhippedCream = false;
     boolean hasChocolate = false;
     String name;
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
      * This method increments the quantity when the "+" button is clicked.
      */
     public void increment(View view) {
+        if (quantity > 99) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot have more than 100 cups of coffee", Toast.LENGTH_SHORT).show();
+            // Exit method early because user is attempting to order too many cups of coffee
+            return;
+        }
         quantity = quantity + 1;
         displayQuantity(quantity);
     }
@@ -44,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
      * This method decrements the quantity when the "-" button is clicked.
      */
     public void decrement(View view) {
+        if (quantity < 2) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot have less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
+            // Exit method early because user is attempting to order too few cups of coffee
+            return;
+        }
         quantity = quantity - 1;
         displayQuantity(quantity);
     }
