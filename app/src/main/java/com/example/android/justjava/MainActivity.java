@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.android.justjava.R;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 0;
     boolean hasWhippedCream = false;
     boolean hasChocolate = false;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         hasWhippedCream = whippedCreamCheckBox.isChecked();
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         hasChocolate = chocolateCheckBox.isChecked();
+        EditText nameEditText = (EditText) findViewById(R.id.name_edittext);
+        name = nameEditText.getText().toString();
         int price = calculatePrice();
         String priceMessage = createOrderSummary(price);
         displayMessage(priceMessage);
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
      * @return order summary String
      */
     private String createOrderSummary (int price) {
-        String priceMessage =  "Kaptain Kunal" +
+        String priceMessage =  name +
                 "\nAdd whipped cream? " + hasWhippedCream +
                 "\nAdd chocolate? " + hasChocolate +
                 "\nQuantity: " + quantity +
