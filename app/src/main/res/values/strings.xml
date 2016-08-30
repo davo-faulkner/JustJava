@@ -14,6 +14,6 @@
     <string name="total">Total</string>
     <string name="toast_more_than_100_cups">You cannot have more than 100 cups of coffee</string>
     <string name="toast_less_than_1_cup">You cannot have less than 1 cup of coffee</string>
-    <string name="just_java_order_for">"Just Java order for"</string>
+    <string name="just_java_order_for">Just Java order for</string>
     <string name="order_summary_name">Name: <xliff:g id="name" example="Amy">%s</xliff:g></string>
 </resources>
