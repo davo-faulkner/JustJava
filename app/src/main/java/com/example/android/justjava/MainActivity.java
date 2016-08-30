@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
      * @return order summary String
      */
     private String createOrderSummary (int price) {
-        String priceMessage =  getString(R.string.name) + ": " + name +
+        String priceMessage =  getString(R.string.order_summary_name, name) +
                 "\n" + getString(R.string.add_whipped_cream) + " " + hasWhippedCream +
                 "\n" + getString(R.string.add_chocolate) + " " + hasChocolate +
                 "\n" + getString(R.string.quantity) + ": " + quantity +
