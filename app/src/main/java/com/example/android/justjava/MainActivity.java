@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         if (quantity > 99) {
             // Show an error message as a toast
-            Toast.makeText(this, "You cannot have more than 100 cups of coffee", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_more_than_100_cups, Toast.LENGTH_SHORT).show();
             // Exit method early because user is attempting to order too many cups of coffee
             return;
         }
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         if (quantity < 2) {
             // Show an error message as a toast
-            Toast.makeText(this, "You cannot have less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_less_than_1_cup, Toast.LENGTH_SHORT).show();
             // Exit method early because user is attempting to order too few cups of coffee
             return;
         }
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary (int price) {
         String priceMessage =  getString(R.string.name) + ": " + name +
-                "\n" + getString(R.string.add_whipped_cream) + "? " + hasWhippedCream +
-                "\n" + getString(R.string.add_chocolate) + "? " + hasChocolate +
+                "\n" + getString(R.string.add_whipped_cream) + " " + hasWhippedCream +
+                "\n" + getString(R.string.add_chocolate) + " " + hasChocolate +
                 "\n" + getString(R.string.quantity) + ": " + quantity +
                 "\n" + getString(R.string.total)+ ": " + price +
                 "\n" + getString(R.string.thank_you);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     private void emailMessage(String message) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.just_java_order_for) + " " + name);
         intent.putExtra(Intent.EXTRA_TEXT, message);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
