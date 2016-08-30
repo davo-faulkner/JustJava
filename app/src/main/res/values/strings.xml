@@ -8,4 +8,8 @@
     <string name="whipped_cream">Whipped Cream</string>
     <string name="chocolate">Chocolate</string>
     <string name="name">Name</string>
+    <string name="thank_you">Thank You!</string>
+    <string name="add_whipped_cream">Add whipped cream</string>
+    <string name="add_chocolate">Add chocolate</string>
+    <string name="total">Total</string>
 </resources>
